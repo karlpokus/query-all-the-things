@@ -1,6 +1,14 @@
 # query-all-the-things
 One query for all the code snippets - featuring gists and google as default fallback.
 
+# usage
+```bash
+# login (Persistant. Searches will be filtered by user)
+$addUser:user
+# search
+[words]
+```
+
 # Demo
 [demo](http://codepen.io/KarlPokus/debug/YGXLjb)
 
@@ -12,12 +20,28 @@ How is this any better than the gists search at github I hear you ask. Well, may
 # TODOs
 - [x] navigate results by arrows
 - [x] google with search term
-- [ ] this would ideally be a chrome extension that displays relevant gists next to google search results
-- [ ] store user in localstorage on first query
-- [ ] display user
+- [ ] chrome extension that displays relevant gists next to google search results
+- [ ] chrome extension that triggers by <kbd>TAB</kbd> in omnibox
+- [x] login
+- [ ] logout
+- [x] display user
 - [ ] use Etag
 - [ ] filter by multiple query strings
 - [ ] Maybe use [SO search api](https://api.stackexchange.com/docs/advanced-search)
+- [ ] a cli?
 
+# api 2.0
+```bash
+# full api
+searchterms [-f] [-t md] [-n limit] [-u username]
+# Include file data in search. Defaults to only search gist description
+-f
+# Limit file types. Only applicable if -f is set
+-t [md, js]
+# limit displayed results. Defaults to 30. Use 0 to set no limit.
+-n [limit]
+# login to filter by user. Persistant. Skip username to logout.
+-u [username]
+```
 # Licence
 MIT
