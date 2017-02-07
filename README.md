@@ -1,5 +1,5 @@
 # query-all-the-things
-One query for all the code snippets - featuring gists and google as default fallback.
+One query for all the code snippets - featuring gists and google as default fallback. A work in progress.
 
 # usage
 ```bash
@@ -18,10 +18,12 @@ What is the real value here? Well, assuming you use google to query code snippet
 How is this any better than the gists search at github I hear you ask. Well, maybe not - but you get the convenience of only searching once for multiple sources *and* filter search by username by default *and* you get a handy list of results unlike githubs gists UI with huge thumbnails.
 
 # TODOs
-- [x] navigate results by arrows
+- [ ] navigate results by arrows
+- [ ] clear results with <kbd>ESC</kbd>
+- [ ] show only google on no results
 - [x] google with search term
 - [ ] chrome extension that displays relevant gists next to google search results
-- [ ] chrome extension that triggers by <kbd>TAB</kbd> in omnibox
+- [ ] **chrome extension that triggers by key + <kbd>TAB</kbd> in omnibox**
 - [x] login
 - [ ] logout
 - [x] display user
