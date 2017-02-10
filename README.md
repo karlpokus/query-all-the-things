@@ -1,49 +1,38 @@
 # query-all-the-things
-One query for all the code snippets - featuring gists and google as default fallback. A work in progress.
+A chrome extension that lives in the omnibox that searches your gists and has google search as default fallback. For the time being aptly titled `find-ma-gist` in `/src`. A work in progress.
 
 # usage
-```bash
-# login (Persistant. Searches will be filtered by user)
-$addUser:user
-# search
-[words]
-```
+- install from the chrome web store (when I'm done)
+- in the omnibox type <kbd>f</kbd> and <kbd>SPACE</kbd> or <kbd>TAB</kbd> to invoke
+- type search query
+- navigate results by <kbd>ARROWKEYS</kbd>
+- hit <kbd>ENTER</kbd> to select
+- reset with <kbd>ESC</kbd>
+- `:login [github username]` to filter query by username. Persistant via google store sync.
+- `:logout` to remove filter
 
-# Demo
-[demo](http://codepen.io/KarlPokus/debug/YGXLjb)
-
-# Why?
-What is the real value here? Well, assuming you use google to query code snippets and your own code snippets are online, google is not going to index them unless they're starred on SO; and google is not going to find your code unless you run fancy mile-long queries with magical operators. So you need to run multiple queries at multiple locations. Query-all-the-things runs **one** query and on **your stuff first** and if you're not satisfied *then* uses google as a fallback.
-
-How is this any better than the gists search at github I hear you ask. Well, maybe not - but you get the convenience of only searching once for multiple sources *and* filter search by username by default *and* you get a handy list of results unlike githubs gists UI with huge thumbnails.
+# why?
+What is the real value here? Well, assuming you use google to query code snippets and your own code snippets are online, google is not going to index them unless they're starred on SO; and google is not going to find your code unless you run fancy mile-long queries with magical operators. So you need to run multiple queries at multiple locations. Query-all-the-things runs **one** query and on **your stuff first** and if you're not satisfied *then* uses google as a fallback. How is this any better than the gists search at github I hear you ask. Well, maybe not - but you get the convenience of only searching once for multiple sources *and* filter search by username by default *and* you get a handy list of results unlike githubs gists UI with huge thumbnails.
 
 # TODOs
-- [ ] navigate results by arrows
-- [ ] clear results with <kbd>ESC</kbd>
-- [ ] show only google on no results
-- [x] google with search term
-- [ ] chrome extension that displays relevant gists next to google search results
-- [ ] **chrome extension that triggers by key + <kbd>TAB</kbd> in omnibox**
 - [x] login
-- [ ] logout
-- [x] display user
+- [x] logout
+- [x] persistant storage
+- [x] google with query by default
+- [x] debounce `inputChanged`
+- [ ] login via popup instead?
+- [ ] change login/logout to filter as that's really what we're doing here
+- [ ] better filter by regex for multiple query strings
+- [ ] display user? Maybe update icon?
+- [ ] fetch more gists for not logged in. Defaults to 100 recent ones.
+- [ ] add more sources? [so](https://api.stackexchange.com/docs/advanced-search), codepen, jsbin?
+- [ ] different UI:s? display results next to google results? a cli?
+- [ ] upload to chrome app store
 - [ ] use Etag
-- [ ] filter by multiple query strings
-- [ ] Maybe use [SO search api](https://api.stackexchange.com/docs/advanced-search)
-- [ ] a cli?
+- [ ] expand search to file name and contents? Maybe just `.md`?
 
-# api 2.0
-```bash
-# full api
-searchterms [-f] [-t md] [-n limit] [-u username]
-# Include file data in search. Defaults to only search gist description
--f
-# Limit file types. Only applicable if -f is set
--t [md, js]
-# limit displayed results. Defaults to 30. Use 0 to set no limit.
--n [limit]
-# login to filter by user. Persistant. Skip username to logout.
--u [username]
-```
+# limitations
+Unauthenticated requests are limited to 60 req/h
+
 # Licence
 MIT
